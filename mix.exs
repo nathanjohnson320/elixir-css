@@ -4,11 +4,13 @@ defmodule Css.MixProject do
   def project do
     [
       app: :css,
+      description: description(),
       version: "0.1.0",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      elixirc_paths: elixirc_paths(Mix.env())
+      elixirc_paths: elixirc_paths(Mix.env()),
+      package: package()
     ]
   end
 
@@ -27,6 +29,20 @@ defmodule Css.MixProject do
     [
       {:xxhash, "~> 0.2.1"},
       {:css_colors, "~> 0.2.0"}
+    ]
+  end
+
+  def description() do
+    "An elm-css like package for elixir that helps with styling/updating Phoenix Live Views"
+  end
+
+  defp package() do
+    [
+      name: "elixir-css",
+      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
+                license* CHANGELOG* changelog* src),
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/nathanjohnson320/elixir-css"}
     ]
   end
 end
