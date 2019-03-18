@@ -39,8 +39,6 @@ defmodule Css.MixProject do
   defp package() do
     [
       name: "elixir-css",
-      files: ~w(lib priv .formatter.exs mix.exs README* readme* LICENSE*
-                license* CHANGELOG* changelog* src),
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/nathanjohnson320/elixir-css"}
     ]
