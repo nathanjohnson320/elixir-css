@@ -39,7 +39,6 @@ defmodule Css.MixProject do
 
   defp package() do
     [
-      name: "elixir-css",
       licenses: ["MIT"],
       links: %{"GitHub" => "https://github.com/nathanjohnson320/elixir-css"}
     ]
