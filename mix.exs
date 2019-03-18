@@ -28,7 +28,8 @@ defmodule Css.MixProject do
   defp deps do
     [
       {:xxhash, "~> 0.2.1"},
-      {:css_colors, "~> 0.2.0"}
+      {:css_colors, "~> 0.2.0"},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
