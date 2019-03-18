@@ -4,8 +4,6 @@ defmodule CssTest do
   import Css
   doctest Css
 
-  
-
   test "hover" do
     styles = [
       display_flex(),
@@ -44,6 +42,10 @@ defmodule CssTest do
 
   test "flex" do
     assert flex(3) == "flex: 3;"
+  end
+
+  test "flex_direction" do
+    assert flex_direction("column") == "flex-direction: column;"
   end
 
   test "width" do

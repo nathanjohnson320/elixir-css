@@ -79,6 +79,10 @@ defmodule Css do
     "flex: #{l};"
   end
 
+  def flex_direction(d) do
+    "flex-direction: #{d};"
+  end
+
   def width(w) do
     "width: #{w};"
   end

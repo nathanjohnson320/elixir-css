@@ -5,7 +5,7 @@ defmodule Css.MixProject do
     [
       app: :css,
       description: description(),
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -17,6 +17,7 @@ defmodule Css.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Css.Application, []},
       extra_applications: [:logger]
     ]
   end
