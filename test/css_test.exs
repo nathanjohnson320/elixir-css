@@ -13,7 +13,7 @@ defmodule CssTest do
     {class, output} = styled(styles)
     
     assert class == "aoGhYVFwgcTVVW"
-    assert output == "<style>\n  .aoGhYVFwgcTVVW {\n    display: flex;\n  }\n</style><style>\n  .aoGhYVFwgcTVVW:hover {\n    background-color: #200F13;\n  }\n</style>"
+    assert output == ".aoGhYVFwgcTVVW {\n  display: flex;\n}\n.aoGhYVFwgcTVVW:hover {\n  background-color: #200F13;\n}\n"
   end
 
   test "styled" do
@@ -21,7 +21,7 @@ defmodule CssTest do
     {class, output} = styled(styles)
 
     assert class == "FRVezCvCMuQPN"
-    assert output == "<style>\n  .FRVezCvCMuQPN {\n    background-color: #200F13;\n  }\n</style>"
+    assert output == ".FRVezCvCMuQPN {\n  background-color: #200F13;\n}\n"
   end
 
   test "rgb" do

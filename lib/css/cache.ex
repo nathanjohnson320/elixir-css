@@ -13,21 +13,24 @@ defmodule Css.Cache do
 
   @impl true
   def handle_call({:get_or_set, key, value}, _from, state) do
-    result = case GenServer.call(self(), {:get, key}) do
+    state = case Map.get(state, key) do
       nil ->
-        GenServer.cast(self(), {:set, key, value})
-        value
+        Map.put(state, key, value)
 
-      value ->
-        value
+      _value ->
+        state
     end
 
-    {:reply, result, state}
+    {:reply, state, state}
   end
 
   @impl true
   def handle_call({:get, key}, _from, state) do
     {:reply, Map.get(state, key), state}
+  end
+
+  def handle_call({:stylesheet}, _from, state) do
+    {:reply, state, state}
   end
 
   @impl true

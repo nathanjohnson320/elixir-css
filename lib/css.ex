@@ -9,7 +9,7 @@ defmodule Css do
   ## Examples
 
       iex> [display_flex(), hover [background_color(rgb("#200F13"))]] |> styled()
-      {"aoGhYVFwgcTVVW", "<style>\n  .aoGhYVFwgcTVVW {\n    display: flex;\n  }\n</style><style>\n  .aoGhYVFwgcTVVW:hover {\n    background-color: #200F13;\n  }\n</style>"}
+      {"aoGhYVFwgcTVVW", ".aoGhYVFwgcTVVW {\n  display: flex;\n}\n.aoGhYVFwgcTVVW:hover {\n  background-color: #200F13;\n}\n"}
 
   """
   def styled(styles) do
@@ -36,17 +36,24 @@ defmodule Css do
     end)
 
     # Concat the base styles and group styles
-    stylesheet = "#{base_styles}#{group_styles}"
+    styles = "#{base_styles}#{group_styles}"
+    GenServer.call(Css.Cache, {:get_or_set, class, styles})
     
-    {class, stylesheet}
+    {class, styles}
   end
 
   defp style_string(class, type, style) do
-"<style>
-  .#{class}#{type} {
-    #{style}
-  }
-</style>"
+".#{class}#{type} {
+  #{style}
+}
+"
+  end
+
+  def stylesheet() do
+    GenServer.call(Css.Cache, {:stylesheet})
+    |> Enum.reduce("", fn({_, class}, styles) -> 
+      "#{styles}#{class}"
+    end)
   end
 
   # Pseudo Classes
